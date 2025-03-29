@@ -4,22 +4,17 @@ pipeline {
        maven 'maven' 
     }
     stages { 
-        //- Clone the repository using Git.  
+     
        stage('Clone') {
             steps {
-                git 'https://github.com/Sanketjadhav31/DEVOPSTEST11.git' branch: 'main'
+              git url: 'https://github.com/AbdelrahmanAbdallah/node-app.git' 
             }
        }
-       //Install dependencies using:  
-       // sh 'npm install'
             stage('Dependencies') {
                 steps {
                     sh 'npm install'
             }                
-            }
-            // Run tests with:  
-            //sh 'npm test || echo "No tests defined"'
-      
+            }      
         stage('Test') {
             steps {
                sh 'npm test || echo "No tests defined"'
