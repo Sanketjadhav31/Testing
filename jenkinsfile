@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'node'  // ✅ Ensure proper spacing
+        nodejs  'node'  // ✅ Ensure proper spacing
     }    
 
     stages { 
