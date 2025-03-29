@@ -2,30 +2,29 @@ pipeline {
     agent any
 
     tools {
-        nodejs  'node'
+        nodejs 'node'  // ✅ Ensure proper spacing
     }    
+
     stages { 
-     
-       stage('Clone') {
+        stage('Clone') {
             steps {
-              git 'https://github.com/Sanketjadhav31/Testing.git'
+                git branch: 'main', url: 'https://github.com/Sanketjadhav31/Testing.git'
             }
-       }
-       stage('Install') {
-             steps {
-             bat 'npm install'
-          }
-       }    
+        }
+        stage('Install') {
+            steps {
+                bat 'npm install'
+            }
+        }    
         stage('Test') {
             steps {
-              bat 'npm test || echo "No tests defined"'
+                bat 'npm test || echo "No tests defined"'
             }
         }
-        stage('bild') {
+        stage('Build') {
             steps {
-                 bat 'npm run build'
+                bat 'npm run build'
             }
         }
-
-      }
-    }
+    } 
+} 
