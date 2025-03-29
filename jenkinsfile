@@ -11,19 +11,19 @@ pipeline {
               git 'https://github.com/Sanketjadhav31/Testing.git'
             }
        }
-            stage('Install') {
-                steps {
-                echo 'npm install'
-                }
-            }    
+       stage('Install') {
+             steps {
+             bat 'npm install'
+          }
+       }    
         stage('Test') {
             steps {
-              echo 'npm test || echo "No tests defined"'
+              bat 'npm test || echo "No tests defined"'
             }
         }
         stage('bild') {
             steps {
-                 echo 'npm run build'
+                 bat 'npm run build'
             }
         }
 
