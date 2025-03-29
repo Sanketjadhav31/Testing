@@ -2,10 +2,9 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'nodejs'
-        maven 'maven'
+        nodejs  'node'
     }
-        
+    
     stages { 
      
        stage('Clone') {
@@ -13,11 +12,11 @@ pipeline {
               git  'https://github.com/Sanketjadhav31/Testing.git'
             }
        }
-        stage('Install') {
-            steps {
-                sh 'npm install'
-            }
-        } 
+            stage('Checkout') {
+                steps {
+                    sh 'npm install'
+            }                
+            }      
         stage('Test') {
             steps {
                sh 'npm test || echo "No tests defined"'
