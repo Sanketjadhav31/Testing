@@ -23,9 +23,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-               bat 'npm run || echo "No scripts found in package.json"'  // Lists available scripts
-               bat 'npm run build || echo "Build script missing!"'  // Prevents failure if script is missing
-    }
-}
-    } 
-} 
+                bat 'npm run build'
+            }
+        }
+    }  // ✅ Fix: Properly closes 'stages'
+}  // ✅ Fix: Properly closes 'pipeline'
