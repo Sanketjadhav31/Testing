@@ -2,30 +2,32 @@ pipeline {
     agent any
 
     tools {
-        nodejs  'node'
-    }    
-    stages { 
-     
-       stage('Clone') {
+        nodejs 'node'
+    }
+
+    stages {
+        stage('Clone') {
             steps {
-              git 'https://github.com/Sanketjadhav31/Testing.git'
-            }
-       }
-            stage('Install') {
-                steps {
-                echo 'npm install'
-                }
-            }    
-        stage('Test') {
-            steps {
-              echo 'npm test || echo "No tests defined"'
-            }
-        }
-        stage('bild') {
-            steps {
-                 echo 'npm run build'
+                git 'https://github.com/Sanketjadhav31/Testing.git'
             }
         }
 
-      }
+        stage('Install') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh 'npm test || echo "No tests defined"'
+            }
+        }
+
+        stage('Build') {  
+            steps {
+                sh 'npm run build'
+            }
+        }
     }
+}
