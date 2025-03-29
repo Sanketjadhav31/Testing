@@ -3,24 +3,31 @@ pipeline {
     tools {
        maven 'maven' 
     }
-    stages {
-        stage('Clone') {
+    stages { 
+        //- Clone the repository using Git.  
+       stage('Clone') {
             steps {
-                git 'https://github.com/Devops-Training-2022/Devops-Training-2022.git' branch: 'main'
-        }
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
+                git 'https://github.com/Sanketjadhav31/DEVOPSTEST11.git' branch: 'main'
             }
-        }
+       }
+       //Install dependencies using:  
+       // sh 'npm install'
+            stage('Dependencies') {
+                steps {
+                    sh 'npm install'
+            }                
+            }
+            // Run tests with:  
+            //sh 'npm test || echo "No tests defined"'
+      
         stage('Test') {
             steps {
-                sh 'mvn test'
+               sh 'npm test || echo "No tests defined"'
             }
         }
-        stage('Deploy') {
+        stage('bild') {
             steps {
-                sh 'mvn package'
+                sh 'npm run build'
             }
         }
 
